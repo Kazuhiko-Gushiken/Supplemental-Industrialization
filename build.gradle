@@ -111,28 +111,81 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        name "Modmaven"
+        url "https://modmaven.dev"
+        content {
+            // GrandPower
+            includeGroup "dev.technici4n"
+            // Modern Industrialization
+            includeGroup "aztech"
+            // Tesseract
+            includeGroup "net.swedz"
+        }
+    }
+    maven {
+        name = "shedaniel"
+        url "https://maven.shedaniel.me"
+        content {
+            // Cloth Config API
+            includeGroup "me.shedaniel.cloth"
+        }
+    }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/releases/"
+        content {
+            // EMI
+            includeGroup "dev.emi"
+        }
+    }
+    maven {
+        name = "Wisp Forest"
+        url = "https://maven.wispforest.io/releases"
+        // Accessories
+    }
+    maven {
+        name = "Su5eD"
+        url = "https://maven.su5ed.dev/releases"
+        content {
+            // Forgified Fabric API - Required by Accessories
+            includeGroup "org.sinytra.forgified-fabric-api"
+        }
+    }
+    maven {
+        name = "Illusive Soulwork"
+        url = "https://maven.theillusivec4.top/"
+        content {
+            // Curios
+            includeGroup "top.theillusivec4.curios"
+        }
+    }
+    maven {
+        name = "Blakebr0"
+        url = "https://maven.blakesmods.com/releases"
+        content {
+            // Cucumber
+            includeGroup "com.blakebr0.cucumber"
+            // Mystical Agriculture
+            includeGroup "com.blakebr0.mysticalagriculture"
+        }
+    }
+}
+
 dependencies {
-    // Example optional mod dependency with JEI
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
-    // compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
-    // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
-    // localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+    implementation "aztech:Modern-Industrialization:${modern_industrialization_version}"
+    implementation "dev.technici4n:GrandPower:${grandpower_version}"
+    implementation "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    implementation "net.swedz:tesseract-api-neoforge:${tesseract_version}-${minecraft_version}"
 
-    // Example mod dependency using a mod jar from ./libs with a flat dir repository
-    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
-    // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
+    //compileOnly "net.swedz:mi-tweaks:${mi_tweaks_version}-${minecraft_version}"
+    //runtimeOnly "net.swedz:mi-tweaks:${mi_tweaks_version}-${minecraft_version}"
 
-    // Example mod dependency using a file as dependency
-    // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
-
-    // Example project dependency using a sister or child project:
-    // implementation project(":myproject")
-
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    runtimeOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
+    runtimeOnly "curse.maven:jade-324717:5639932"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
